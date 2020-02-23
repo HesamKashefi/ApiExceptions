@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+﻿using System.Collections.Generic;
 
 namespace ApiExceptions.Exceptions
 {
@@ -20,9 +20,17 @@ namespace ApiExceptions.Exceptions
         /// <param name="error"></param>
         public void AddModelError(string key, string error)
         {
-            ModelState.AddModelError(key, error);
+            if (Errors.ContainsKey(key))
+            {
+                var ls = new List<string>(Errors[key]) { error };
+                Errors[key] = ls.ToArray();
+            }
+            else
+            {
+                Errors[key] = new[] { error };
+            }
         }
 
-        public ModelStateDictionary ModelState { get; } = new ModelStateDictionary();
+        public IDictionary<string, string[]> Errors { get; } = new Dictionary<string, string[]>();
     }
 }
