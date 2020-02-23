@@ -4,7 +4,7 @@
     /// Entity Not Found Exception
     /// Indicates a 404 response
     /// </summary>
-    public class EntityNotFoundException : RequestBaseException
+    public class EntityNotFoundException : ApiRequestException
     {
         public EntityNotFoundException(string message) : base(message)
         {

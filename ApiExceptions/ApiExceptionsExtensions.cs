@@ -5,8 +5,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using System;
 using System.Data.SqlClient;
 using System.Net;
@@ -15,10 +13,10 @@ namespace ApiExceptions
 {
     public static class ApiExceptionsExtensions
     {
-        private static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings
+        private static readonly System.Text.Json.JsonSerializerOptions JsonSerializerSettings = new System.Text.Json.JsonSerializerOptions
         {
-            NullValueHandling = NullValueHandling.Ignore,
-            ContractResolver = new CamelCasePropertyNamesContractResolver()
+            IgnoreNullValues = true,
+            PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase
         };
 
         public static void ConfigureValidationProblems<TStartUp>(
@@ -72,15 +70,15 @@ namespace ApiExceptions
                                     }));
                                 break;
 
-                            case RequestBaseException requestBaseException:
-                                logger.LogError(requestBaseException, "Request Exception Type={type}",
-                                    requestBaseException.GetType().Name);
-                                context.Response.StatusCode = requestBaseException.HttpStatusCode;
+                            case ApiRequestException apiRequestException:
+                                logger.LogError(apiRequestException, "Request Exception Type={type}",
+                                    apiRequestException.GetType().Name);
+                                context.Response.StatusCode = apiRequestException.HttpStatusCode;
                                 await context.Response.WriteAsync(Serialize(
                                     new ProblemDetails()
                                     {
-                                        Status = requestBaseException.HttpStatusCode,
-                                        Detail = requestBaseException.Message
+                                        Status = apiRequestException.HttpStatusCode,
+                                        Detail = apiRequestException.Message
                                     }));
                                 break;
 
@@ -119,7 +117,7 @@ namespace ApiExceptions
 
         private static string Serialize<T>(T obj)
         {
-            return JsonConvert.SerializeObject(obj, JsonSerializerSettings);
+            return System.Text.Json.JsonSerializer.Serialize(obj, JsonSerializerSettings);
         }
     }
 }

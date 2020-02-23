@@ -8,6 +8,7 @@ namespace ApiExceptions.Exceptions
     /// </summary>
     public class ApiRequestException : HttpRequestException
     {
+        public short HttpStatusCode { get; protected set; } = (short)System.Net.HttpStatusCode.InternalServerError;
         public ApiRequestException(string message) : base(message)
         {
             

@@ -4,7 +4,7 @@
     /// Entity Already Exists Exception
     /// Indicates a 409 response
     /// </summary>
-    public class EntityAlreadyExistsException : RequestBaseException
+    public class EntityAlreadyExistsException : ApiRequestException
     {
         public EntityAlreadyExistsException(string message) : base(message)
         {

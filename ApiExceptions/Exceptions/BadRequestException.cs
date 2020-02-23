@@ -6,7 +6,7 @@ namespace ApiExceptions.Exceptions
     /// Bad Request Exception
     /// Indicates a 400 response
     /// </summary>
-    public class BadRequestException : RequestBaseException
+    public class BadRequestException : ApiRequestException
     {
         public BadRequestException(string message) : base(message)
         {

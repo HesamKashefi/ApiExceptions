@@ -4,7 +4,7 @@
     /// Forbidden Access Exception
     /// Indicates a 403 response
     /// </summary>
-    public class ForbiddenAccessException : RequestBaseException
+    public class ForbiddenAccessException : ApiRequestException
     {
         public ForbiddenAccessException(string message) : base(message)
         {
