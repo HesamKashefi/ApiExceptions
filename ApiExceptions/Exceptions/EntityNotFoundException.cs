@@ -1,4 +1,6 @@
-﻿namespace ApiExceptions.Exceptions
+﻿using System;
+
+namespace ApiExceptions.Exceptions
 {
     /// <summary>
     /// Entity Not Found Exception
@@ -7,6 +9,11 @@
     public class EntityNotFoundException : ApiRequestException
     {
         public EntityNotFoundException(string message) : base(message)
+        {
+            HttpStatusCode = (short)System.Net.HttpStatusCode.NotFound;
+        }
+
+        public EntityNotFoundException(string message, Exception inner) : base(message, inner)
         {
             HttpStatusCode = (short)System.Net.HttpStatusCode.NotFound;
         }

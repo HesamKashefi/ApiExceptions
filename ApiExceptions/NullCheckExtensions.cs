@@ -16,7 +16,7 @@ namespace ApiExceptions
         /// <param name="cancellationToken">Cancellation token</param>
         /// <param name="message">An optional message for the exception</param>
         public static void ThrowEntityNotFoundIfNull<T, TKey>(this T entity,
-            TKey id, 
+            TKey id,
             CancellationToken cancellationToken = default,
             string message = null)
             where T : class

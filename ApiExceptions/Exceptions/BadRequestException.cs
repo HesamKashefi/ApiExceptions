@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ApiExceptions.Exceptions
 {
@@ -9,6 +10,11 @@ namespace ApiExceptions.Exceptions
     public class BadRequestException : ApiRequestException
     {
         public BadRequestException(string message) : base(message)
+        {
+            HttpStatusCode = (short)System.Net.HttpStatusCode.BadRequest;
+        }
+
+        public BadRequestException(string message, Exception inner) : base(message, inner)
         {
             HttpStatusCode = (short)System.Net.HttpStatusCode.BadRequest;
         }

@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 
 namespace ApiExceptions.Exceptions
 {
@@ -9,9 +10,19 @@ namespace ApiExceptions.Exceptions
     public class ApiRequestException : HttpRequestException
     {
         public short HttpStatusCode { get; protected set; } = (short)System.Net.HttpStatusCode.InternalServerError;
+        public ApiRequestException() : base("API Request Failed")
+        {
+
+        }
+
         public ApiRequestException(string message) : base(message)
         {
-            
+
+        }
+
+        public ApiRequestException(string message, Exception inner) : base(message, inner)
+        {
+
         }
     }
 }
