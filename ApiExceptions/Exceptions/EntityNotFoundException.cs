@@ -4,7 +4,7 @@ namespace ApiExceptions.Exceptions
 {
     /// <summary>
     /// Entity Not Found Exception
-    /// Indicates a 404 response
+    /// Indicates a <see cref="System.Net.HttpStatusCode.NotFound"/> response
     /// </summary>
     public class EntityNotFoundException : ApiRequestException
     {

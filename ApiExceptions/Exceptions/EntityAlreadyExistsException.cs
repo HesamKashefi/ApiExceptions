@@ -4,7 +4,7 @@ namespace ApiExceptions.Exceptions
 {
     /// <summary>
     /// Entity Already Exists Exception
-    /// Indicates a 409 response
+    /// Indicates a <see cref="System.Net.HttpStatusCode.Conflic"/> response
     /// </summary>
     public class EntityAlreadyExistsException : ApiRequestException
     {

@@ -5,7 +5,7 @@ namespace ApiExceptions.Exceptions
 {
     /// <summary>
     /// Bad Request Exception
-    /// Indicates a 400 response
+    /// Indicates a <see cref="System.Net.HttpStatusCode.BadRequest"/> response
     /// </summary>
     public class BadRequestException : ApiRequestException
     {

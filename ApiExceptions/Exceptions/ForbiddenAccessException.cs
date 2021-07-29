@@ -4,7 +4,7 @@ namespace ApiExceptions.Exceptions
 {
     /// <summary>
     /// Forbidden Access Exception
-    /// Indicates a 403 response
+    /// Indicates a <see cref="System.Net.HttpStatusCode.Forbidden"/> response
     /// </summary>
     public class ForbiddenAccessException : ApiRequestException
     {

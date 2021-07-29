@@ -4,7 +4,7 @@ namespace ApiExceptions.Exceptions
 {
     /// <summary>
     /// UnAuthorized Access exception
-    /// Indicates a 401 response
+    /// Indicates a <see cref="System.Net.HttpStatusCode.Unauthorized"/> response
     /// </summary>
     public class UnAuthorizedAccessException : ApiRequestException
     {
