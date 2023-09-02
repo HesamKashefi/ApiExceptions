@@ -2,6 +2,10 @@
 
 This is a small library containing a couple of Exception Types useful in creating Web APIs.
 
+## Build Status
+
+[![build](https://github.com/HesamKashefi/ApiExceptions/actions/workflows/build.yml/badge.svg)](https://github.com/HesamKashefi/ApiExceptions/actions/workflows/build.yml)
+
 ## Installation
 
 With dotnet cli
