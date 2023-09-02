@@ -22,7 +22,7 @@ namespace ApiExceptions.Exceptions
         {
         }
 
-        public EntityNotFoundException(object key, string message) : base($"Using Id = '{key}' , " + message)
+        public EntityNotFoundException(object key, string message) : base($"Using key = '{key}' , " + message)
         {
             HttpStatusCode = (short)System.Net.HttpStatusCode.NotFound;
         }
